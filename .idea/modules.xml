@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AP2.iml" filepath="$PROJECT_DIR$/.idea/AP2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InteraccionConListas/InteraccionConListas.iml" filepath="$PROJECT_DIR$/InteraccionConListas/InteraccionConListas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InteraccionConMatrices/InteraccionConMatrices.iml" filepath="$PROJECT_DIR$/InteraccionConMatrices/InteraccionConMatrices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InteraccionConPolinomios/InteraccionConPolinomios.iml" filepath="$PROJECT_DIR$/InteraccionConPolinomios/InteraccionConPolinomios.iml" />
+    </modules>
+  </component>
+</project>
