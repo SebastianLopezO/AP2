@@ -6,7 +6,7 @@ package interaccionconlistas;
 
 /**
  *
- * @author sala304
+ * @author Sebastian Lopez Osorno
  */
 public class Nodo {
     //Atributos
