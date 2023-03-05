@@ -16,6 +16,11 @@ public class Main {
      */
     public static void main(String[] args) {
         Lista L1 = new Lista();
+        Lista L2 = new Lista();
+        L2.InsertEnd(8);
+        L2.InsertEnd(3);
+        L2.InsertEnd(5);
+        L2.InsertEnd(11);
         boolean app = true;
         String Option,SubOption;
         int num;
@@ -57,16 +62,16 @@ public class Main {
                     SubOption =MenuOpe();
                     switch (SubOption){
                         case "Suma de Listas":
-                            L1=L1.OperList(L1, "+");
+                            L1=L1.OperList(L2, "+");
                             break;
                         case "Resta de Listas":
-                            L1=L1.OperList(L1, "-");
+                            L1=L1.OperList(L2, "-");
                             break;
                         case "Multiplicacion de Listas":
-                            L1=L1.OperList(L1, "*");
+                            L1=L1.OperList(L2, "*");
                             break;
                         case "Division de Listas":
-                            L1=L1.OperList(L1, "/");
+                            L1=L1.OperList(L2, "/");
                             break;
                     }
                     break;

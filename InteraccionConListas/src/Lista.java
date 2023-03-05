@@ -127,7 +127,7 @@ public class Lista {
         Lista LR=new Lista();
         Nodo P1=Punta,P2=L.getPunta(),P = null;
         int Dg1=0,Dg2=0;
-        while(P1!=null && P2!=null){
+        while(P1!=null || P2!=null){
             if(P1!=null){
                 Dg1=P1.getDato();
                 P1=P1.getLiga();
