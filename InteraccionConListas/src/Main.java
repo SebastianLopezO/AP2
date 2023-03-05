@@ -17,22 +17,11 @@ public class Main {
     public static void main(String[] args) {
         Lista L1 = new Lista();
         boolean app = true;
-        String Option;
+        String Option,SubOption;
         int num;
 
-        //Menu
-        String[] Options = {"Ingresar Ordenado","Ingresar al Final", "Ingresar al Inicio","Ordenar Lista","Mostrar Lista", "Salir"};
-
         do {
-            Option = (String) JOptionPane.showInputDialog(
-                    null,
-                    "Seleccione la Opcion: ",
-                    "Menu",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    Options,
-                    Options[0]);
-
+            Option = Menu();
             switch (Option) {
                 case "Ingresar Ordenado":
                     try {
@@ -65,7 +54,21 @@ public class Main {
                     L1.Show();
                     break;
                 case "Operacion Con Listas":
-                    L1.Show();
+                    SubOption =MenuOpe();
+                    switch (SubOption){
+                        case "Suma de Listas":
+                            L1=L1.OperList(L1, "+");
+                            break;
+                        case "Resta de Listas":
+                            L1=L1.OperList(L1, "-");
+                            break;
+                        case "Multiplicacion de Listas":
+                            L1=L1.OperList(L1, "*");
+                            break;
+                        case "Division de Listas":
+                            L1=L1.OperList(L1, "/");
+                            break;
+                    }
                     break;
                 case "Salir":
                     app = false;
@@ -73,6 +76,34 @@ public class Main {
             }
         } while (app);
 
+    }
+
+    public static String Menu(){
+        String[] Options = {"Ingresar Ordenado","Ingresar al Final", "Ingresar al Inicio","Ordenar Lista","Mostrar Lista","Operacion Con Listas", "Salir"};
+        String Option =  (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione la Opcion: ",
+                "Menu",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                Options,
+                Options[0]);
+
+        return Option;
+    }
+
+    public static String MenuOpe(){
+        String[] Options = {"Suma de Listas","Resta de Listas","Multiplicacion de Listas","Division de Listas"};
+        String Option =  (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione la Opcion: ",
+                "Menu de Operaciones",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                Options,
+                Options[0]);
+
+        return Option;
     }
 
 }

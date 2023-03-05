@@ -5,7 +5,6 @@
 package interaccionconlistas;
 
 import javax.swing.JOptionPane;
-import javax.xml.stream.events.DTD;
 
 /**
  *
@@ -123,4 +122,46 @@ public class Lista {
 
     }
 
+
+    public Lista OperList(Lista L,String ope) {
+        Lista LR=new Lista();
+        Nodo P1=Punta,P2=L.getPunta(),P = null;
+        int Dg1=0,Dg2=0;
+        while(P1!=null && P2!=null){
+            if(P1!=null){
+                Dg1=P1.getDato();
+                P1=P1.getLiga();
+            }else{
+                Dg1=0;
+            }
+            if(P2!=null){
+                Dg2=P2.getDato();
+                P2=P2.getLiga();
+            }else{
+                Dg2=0;
+            }
+            switch (ope){
+                case "+":
+                    LR.InsertEnd(Dg1+Dg2);
+                    break;
+                case "-":
+                    LR.InsertEnd(Dg1-Dg2);
+                    break;
+                case "*":
+                    LR.InsertEnd(Dg1*Dg2);
+                    break;
+                case "/":
+                    int num;
+                    try{
+                        num=Dg1/Dg2;
+                    }catch (ArithmeticException  ex){
+                        System.out.println("Division por cero");
+                        num=1;
+                    }
+                    LR.InsertEnd(num);
+                    break;
+            }
+        }
+        return LR;
+    }
 }
