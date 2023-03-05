@@ -41,6 +41,7 @@ public class Main {
                         break;
                     }
                     L1.InsertOrder(num);
+                    break;
                 case "Ingresar al Final":
                     try {
                         num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
@@ -61,6 +62,9 @@ public class Main {
                     L1.Orderby();
                     break;
                 case "Mostrar Lista":
+                    L1.Show();
+                    break;
+                case "Operacion Con Listas":
                     L1.Show();
                     break;
                 case "Salir":

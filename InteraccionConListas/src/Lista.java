@@ -5,6 +5,7 @@
 package interaccionconlistas;
 
 import javax.swing.JOptionPane;
+import javax.xml.stream.events.DTD;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Lista {
 
     //Get's and Set's
     public Nodo getPunta() {
-        return Punta;
+        return this.Punta;
     }
 
     public void setPunta(Nodo Punta) {
@@ -32,21 +33,21 @@ public class Lista {
     //Metodos
     public void InsertStart(int Dato) {
         Nodo P, X = new Nodo(Dato);
-        if (Punta == null) {
-            Punta = X;
+        if (this.Punta == null) {
+            this.Punta = X;
         }else{
-            X.setLiga(Punta);
-            Punta = X;
+            X.setLiga(this.Punta);
+            this.Punta = X;
         }
     }
 
     public void InsertEnd(int Dato) {
         Nodo P, X = new Nodo(Dato);
 
-        if (Punta == null) {
-            Punta = X;
+        if (this.Punta == null) {
+            this.Punta = X;
         }else{
-            P = Punta;
+            P = this.Punta;
             while (P.getLiga() != null) {
                 P = P.getLiga(); //Avance de Liga
             }
@@ -57,34 +58,34 @@ public class Lista {
 
     public void InsertOrder(int Dato){
         Orderby();
-        if(Punta==null){
+        if(this.Punta==null){
             InsertEnd(Dato);
-        } else if (Punta.getDato()>Dato) {
+        } else if (this.Punta.getDato()>Dato) {
             InsertStart(Dato);
         }else{
-            Nodo P=Punta;
-            boolean Find=true;
-            while (P.getLiga()!=null && Find){
-                if(P.getLiga()==null && (P.getDato()<Dato)){
+            Nodo P=this.Punta;
+            Boolean Find=true;
+            while (P!=null && Find){
+                if (P.getDato()<=Dato && P.getLiga()==null ) {
                     InsertEnd(Dato);
                     Find=false;
-                }
-
-                if((P!=Punta && P.getLiga()!=null) && (P.getDato()<=Dato && (P.getLiga()).getDato()<=Dato )){
+                } else if (P.getDato()<=Dato && (P.getLiga()).getDato()>=Dato) {
                     Nodo X=new Nodo(Dato);
-                    P.setLiga(X);
                     X.setLiga(P.getLiga());
+                    P.setLiga(X);
+                    Find=false;
                 }
+                P=P.getLiga();
             }
         }
     }
 
     public void Orderby(){
         Nodo P,X;
-        if(Punta!=null){
-            P=Punta;
+        if(this.Punta!=null){
+            P=this.Punta;
             while (P.getLiga()!=null){
-                X=Punta;
+                X=this.Punta;
                 while ((X.getLiga()).getLiga()!=null) {
                     if (P.getDato()>(P.getLiga()).getDato()){
                         Swap(P,(P.getLiga()).getLiga());
@@ -100,6 +101,15 @@ public class Lista {
         int aux=P.getDato();
         P.setDato(X.getDato());
         X.setDato(aux);
+    }
+
+    public int Length(){
+        int cont=0;
+        Nodo P;
+        for (P = this.Punta; P != null; P = P.getLiga()) {
+            cont++;
+        }
+        return cont;
     }
 
     public void Show() {
