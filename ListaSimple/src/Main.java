@@ -4,16 +4,34 @@ public class Main {
     public static void main(String[] args) {
         Lista L1 = new Lista();
         Lista L2 = new Lista();
-        L2.InsertEnd(8);
-        L2.InsertEnd(3);
-        L2.InsertEnd(5);
-        L2.InsertEnd(11);
+        Lista L3 = new Lista();
+        Lista L4 = new Lista();
+        Lista LAns = new Lista();
+        Lista L=new Lista();
+
         boolean app = true;
-        String Option,SubOption;
+        String Option,SubOption,OptionList;
         int num;
 
         do {
             Option = Menu();
+            OptionList = MenuList();
+
+            switch (OptionList){
+                case "ListA":
+                    L = L1;
+                    break;
+                case "ListB":
+                    L = L2;
+                    break;
+                case "ListC":
+                    L = L3;
+                    break;
+                case "ListD":
+                    L = L4;
+                    break;
+            }
+
             switch (Option) {
                 case "Ingresar Ordenado":
                     try {
@@ -21,7 +39,7 @@ public class Main {
                     } catch (NumberFormatException ex) {
                         break;
                     }
-                    L1.InsertOrder(num);
+                    L.InsertOrder(num);
                     break;
                 case "Ingresar al Final":
                     try {
@@ -29,7 +47,7 @@ public class Main {
                     } catch (NumberFormatException ex) {
                         break;
                     }
-                    L1.InsertEnd(num);
+                    L.InsertEnd(num);
                     break;
                 case "Ingresar al Inicio":
                     try {
@@ -37,28 +55,28 @@ public class Main {
                     } catch (NumberFormatException ex) {
                         break;
                     }
-                    L1.InsertStart(num);
+                    L.InsertStart(num);
                     break;
                 case "Ordenar Lista":
-                    L1.Orderby();
+                    L.Orderby();
                     break;
                 case "Mostrar Lista":
-                    L1.Show();
+                    L.Show();
                     break;
                 case "Operacion Con Listas":
                     SubOption =MenuOpe();
                     switch (SubOption){
                         case "Suma de Listas":
-                            L1=L1.OperList(L2, "+");
+                            LAns.OperList(L1,L2, "+");
                             break;
                         case "Resta de Listas":
-                            L1=L1.OperList(L2, "-");
+                            LAns.OperList(L1,L2, "-");
                             break;
                         case "Multiplicacion de Listas":
-                            L1=L1.OperList(L2, "*");
+                            LAns.OperList(L1,L2, "*");
                             break;
                         case "Division de Listas":
-                            L1=L1.OperList(L2, "/");
+                            LAns.OperList(L1,L2, "/");
                             break;
                     }
                     break;
@@ -66,6 +84,22 @@ public class Main {
                     app = false;
                     break;
             }
+
+            switch (OptionList){
+                case "ListA":
+                    L1= L;
+                    break;
+                case "ListB":
+                    L2 = L;
+                    break;
+                case "ListC":
+                    L3 = L;
+                    break;
+                case "ListD":
+                    L4 = L;
+                    break;
+            }
+
         } while (app);
 
     }
@@ -84,12 +118,26 @@ public class Main {
         return Option;
     }
 
+    public static String MenuList(){
+        String[] Options = {"ListA","ListB", "ListC","ListD","ListaAns"};
+        String Option =  (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione la Opcion: ",
+                "Variables",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                Options,
+                Options[0]);
+
+        return Option;
+    }
+
     public static String MenuOpe(){
         String[] Options = {"Suma de Listas","Resta de Listas","Multiplicacion de Listas","Division de Listas"};
         String Option =  (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione la Opcion: ",
-                "Menu de Operaciones",
+                "Operaciones",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 Options,

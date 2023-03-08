@@ -69,10 +69,41 @@ public class Lista {
         }
     }
 
+    //Utilidades
+
+    public int Max(){
+        int Dato;
+        if(this.Punta!=null){
+            Dato= Punta.getDato();
+            for (Nodo P = this.Punta; P != null; P = P.getLiga()) {
+                if(P.getDato()>Dato){
+                    Dato=P.getDato();
+                }
+            }
+        }else{
+            Dato= 0;
+        }
+        return Dato;
+    }
+    public int Min(){
+        int Dato;
+        if(this.Punta!=null){
+            Dato= Punta.getDato();
+            for (Nodo P = this.Punta; P != null; P = P.getLiga()) {
+                if(P.getDato()<Dato){
+                    Dato=P.getDato();
+                }
+            }
+        }else{
+            Dato= 0;
+        }
+        return Dato;
+    }
     public void Orderby(){
         Nodo P,X;
         if(this.Punta!=null){
             P=this.Punta;
+            //Metodo Burbuja {Por cada N numeros se hace N recorridos}
             while (P.getLiga()!=null){
                 X=this.Punta;
                 while ((X.getLiga()).getLiga()!=null) {
@@ -85,6 +116,7 @@ public class Lista {
             }
         }
     }
+
 
     public void Swap(Nodo P, Nodo X){
         int aux=P.getDato();
@@ -101,6 +133,11 @@ public class Lista {
         return cont;
     }
 
+    public void Truncate(){
+        Punta=null;
+        System.gc();
+    }
+
     public void Show() {
         String msj = "[ ";
         Nodo P;
@@ -112,46 +149,52 @@ public class Lista {
 
     }
 
+    //Operaciones
 
-    public Lista OperList(Lista L,String ope) {
-        Lista LR=new Lista();
-        Nodo P1=Punta,P2=L.getPunta(),P = null;
-        int Dg1=0,Dg2=0;
-        while(P1!=null || P2!=null){
-            if(P1!=null){
-                Dg1=P1.getDato();
-                P1=P1.getLiga();
+    public void OperList(Lista L, Lista S, String ope){
+        Truncate();
+        Nodo PL=L.getPunta();
+        Nodo PS=S.getPunta();
+        int DL,DS;
+
+        while (PL!=null || PS!=null){
+            //Obtener Digito de Lista L
+            if(PL!=null){
+                DL=PL.getDato();
+                PL=PL.getLiga();
             }else{
-                Dg1=0;
+                DL=0;
             }
-            if(P2!=null){
-                Dg2=P2.getDato();
-                P2=P2.getLiga();
+
+            //Obtener Digito de Lista S
+            if(PL!=null){
+                DS=PS.getDato();
+                PS=PS.getLiga();
             }else{
-                Dg2=0;
+                DS=0;
             }
+
             switch (ope){
                 case "+":
-                    LR.InsertEnd(Dg1+Dg2);
+                    InsertEnd(DL+DS);
                     break;
                 case "-":
-                    LR.InsertEnd(Dg1-Dg2);
+                    InsertEnd(DL-DS);
                     break;
                 case "*":
-                    LR.InsertEnd(Dg1*Dg2);
+                    InsertEnd(DL*DS);
                     break;
                 case "/":
-                    int num;
                     try{
-                        num=Dg1/Dg2;
+                        InsertEnd(DL/DS);
                     }catch (ArithmeticException  ex){
                         System.out.println("Division por cero");
-                        num=1;
+                        InsertEnd(1);
                     }
-                    LR.InsertEnd(num);
                     break;
             }
+
+
         }
-        return LR;
     }
 }
