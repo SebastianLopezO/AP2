@@ -27,7 +27,10 @@ public class Polinomio {
         for(int i=0;i<monomios.length;i++){
             String partes[]=monomios[i].split("(?=([x]))");
             if(partes.length==1){
-                if(partes[0].contains("x")){
+                if(partes[0].matches("x\\^\\d+")){
+                    vecCoe[i]=1;
+                    vecExp[i]=Integer.parseInt(partes[0].replace("x^",""));
+                }else if(partes[0].contains("x")){
                     vecCoe[i]=1;
                     vecExp[i]=1;
                 }else if(partes[0].matches("\\d+") || partes[0].matches("[+-]\\d+")){

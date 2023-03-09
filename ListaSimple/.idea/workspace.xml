@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36a983a2-9d66-4328-a4f3-d95bbce4b58b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ListaDoble/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ListaDoble/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ListaDoble/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ListaDoble/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Polinomios/src/Polinomio.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Polinomios/src/Polinomio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +48,9 @@
       <updated>1678225669783</updated>
       <workItem from="1678225670955" duration="18000" />
       <workItem from="1678226328276" duration="108000" />
-      <workItem from="1678235086979" duration="1671000" />
+      <workItem from="1678235086979" duration="1705000" />
+      <workItem from="1678327056182" duration="1092000" />
+      <workItem from="1678329307063" duration="2083000" />
     </task>
     <servers />
   </component>
