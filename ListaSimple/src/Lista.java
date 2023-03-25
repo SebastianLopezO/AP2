@@ -4,10 +4,12 @@ public class Lista {
 
     //Atributos
     public Nodo Punta;
+    public String Name, Method="empty";
 
     //Constructor
-    public Lista() {
+    public Lista(String Name) {
         this.Punta = null;
+        this.Name = Name;
     }
 
     //Get's and Set's
@@ -101,7 +103,7 @@ public class Lista {
         return Dato;
     }
 
-    public void Orderby(){
+    public void Orderby() {
 
     }
 
@@ -259,5 +261,32 @@ public class Lista {
             }
         }
     }
+
+    public String ExportListHtml() {
+        Nodo P = this.Punta;
+        String html = "<div class=\"container\">" +
+                "<div class=\"container-title\">" +
+                "<div class=\"title\">" + Name + "</div>" +
+                "<div class=\"text\">" + Method + "</div>" +
+                "</div>";
+
+        while (P != null) {
+            html += "<table>" +
+                    "<tr>" +
+                    "<td class=\"transparent\">" + P + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td class=\"yellow\">" + P.getDato() + "</td>" +
+                    "<td class=\"green\">" + P.getLiga() + "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "<div class=\"flecha\">&#8646;</div>";
+            P = P.getLiga();
+        }
+
+        html += "</div>";
+        return html;
+    }
+
 }
 

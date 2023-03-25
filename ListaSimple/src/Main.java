@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        Lista ListA = new Lista();
-        Lista ListB = new Lista();
-        Lista ListC = new Lista();
-        Lista ListD = new Lista();
-        Lista ListAns = new Lista();
+        Lista ListA = new Lista("ListA");
+        Lista ListB = new Lista("ListB");
+        Lista ListC = new Lista("ListC");
+        Lista ListD = new Lista("ListD");
+        Lista ListAns = new Lista("ListAns");
 
         //Puntero
         Lista L = null;
@@ -27,7 +27,7 @@ public class Main {
         int num;
 
         do {
-            Option = Menu();
+            action=true;
             OptionList = MenuList();
 
             switch (OptionList) {
@@ -62,13 +62,16 @@ public class Main {
                             ListAns.Div(L, S);
                             break;
                     }
+                    action = false;
                     break;
                 case "Salir":
                     System.out.println("Hasta Luego, Vuelve pronto");
-                    action = false;
                     app = false;
+                    action=false;
+                    break;
             }
             while (action) {
+                Option = Menu();
                 switch (Option) {
                     case "Ingresar Ordenado":
                         L.InsertOrder(GetNum());
@@ -88,12 +91,11 @@ public class Main {
                     case "Mostrar Lista":
                         L.Show();
                         break;
-                    case "volver":
+                    case "Volver":
                         action = false;
                         break;
                 }
             }
-
         } while (app);
 
     }
@@ -146,5 +148,14 @@ public class Main {
                 System.out.println("No ha ingresado un numero");
             }
         }
+    }
+
+    public static void Export(Lista[] Elems) {
+        //Archivo
+        Html FileProyect = new Html();
+        for (int i = 0; i < Elems.length; i++) {
+            FileProyect.AddBody(Elems[i].ExportListHtml());
+        }
+        FileProyect.Export("Memory");
     }
 }
