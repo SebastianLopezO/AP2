@@ -55,13 +55,13 @@ td {
 }
 
 
-.white.node{
+.white.node {
     background-color: white;
     color: black;
     font-size: 12px;
 }
 
-.white.data{
+.white.data {
     background-color: white;
     color: black;
     font-size: 30px;

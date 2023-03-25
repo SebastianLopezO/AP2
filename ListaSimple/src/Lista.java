@@ -4,7 +4,7 @@ public class Lista {
 
     //Atributos
     public Nodo Punta;
-    public String Name, Method="empty";
+    public String Name, Method = "empty";
 
     //Constructor
     public Lista(String Name) {

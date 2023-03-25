@@ -21,13 +21,13 @@ public class Main {
         Variables.put("ListC", ListC);
         Variables.put("ListD", ListD);
 
-        boolean app = true, action=true;
+        boolean app = true, action = true;
         String Option, OptionOpe[], OptionList, OptionShow;
 
         int num;
 
         do {
-            action=true;
+            action = true;
             OptionList = MenuList();
 
             switch (OptionList) {
@@ -45,8 +45,8 @@ public class Main {
                     break;
                 case "Operacion Con Listas":
                     OptionOpe = MenuOpe();
-                    L=Variables.get(OptionOpe[0]);
-                    S=Variables.get(OptionOpe[2]);
+                    L = Variables.get(OptionOpe[0]);
+                    S = Variables.get(OptionOpe[2]);
 
                     switch (OptionOpe[1]) {
                         case "+":
@@ -67,7 +67,8 @@ public class Main {
                 case "Salir":
                     System.out.println("Hasta Luego, Vuelve pronto");
                     app = false;
-                    action=false;
+                    action = false;
+                    Export(new Lista[]{ListA, ListB, ListC, ListD, ListAns});
                     break;
             }
             while (action) {
@@ -166,11 +167,12 @@ public class Main {
                 Options[0]);
         return Option;
     }
-    public static int GetNum(){
-        while (true){
+
+    public static int GetNum() {
+        while (true) {
             try {
-               int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
-               return num;
+                int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
+                return num;
             } catch (NumberFormatException ex) {
                 System.out.println("No ha ingresado un numero");
             }
@@ -185,7 +187,7 @@ public class Main {
         String Option = (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione una Opcion: ",
-                "Mostrar "+List,
+                "Mostrar " + List,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 Options,
