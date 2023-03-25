@@ -156,6 +156,16 @@ public class Lista {
         JOptionPane.showMessageDialog(null, msj);
     }
 
+    public void ShowDetails() {
+        String msj = "[ ";
+        Nodo P;
+        for (P = this.Punta; P != null; P = P.getLiga()) {
+            msj += "| " + P.getDato() + " | " + P.getLiga() + " |  => ";
+        }
+        msj += " ]";
+        System.out.println(msj);
+    }
+
     //Operaciones
 
     public void Sum(Lista L, Lista S) {
@@ -286,6 +296,34 @@ public class Lista {
 
         html += "</div>";
         return html;
+    }
+
+    public void ShowListHtml() {
+        Nodo P = this.Punta;
+        String html = "<div class=\"container\">" +
+                "<div class=\"container-title\">" +
+                "<div class=\"title\">" + Name + "</div>" +
+                "<div class=\"text\">" + Method + "</div>" +
+                "</div>";
+
+        while (P != null) {
+            html += "<table>" +
+                    "<tr>" +
+                    "<td class=\"transparent\">" + P + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td class=\"yellow\">" + P.getDato() + "</td>" +
+                    "<td class=\"green\">" + P.getLiga() + "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "<div class=\"flecha\">&#8646;</div>";
+            P = P.getLiga();
+        }
+
+        html += "</div>";
+        Html File = new Html();
+        File.AddBody(html);
+        File.Export(Name);
     }
 
 }

@@ -22,7 +22,7 @@ public class Main {
         Variables.put("ListD", ListD);
 
         boolean app = true, action=true;
-        String Option, OptionOpe[], OptionList;
+        String Option, OptionOpe[], OptionList, OptionShow;
 
         int num;
 
@@ -89,7 +89,18 @@ public class Main {
                         L.Orderby();
                         break;
                     case "Mostrar Lista":
-                        L.Show();
+                        OptionShow = MenuShow();
+                        switch (OptionShow) {
+                            case "Consola":
+                                L.ShowDetails();
+                                break;
+                            case "Panel":
+                                L.Show();
+                                break;
+                            case "Web":
+                                L.ShowListHtml();
+                                break;
+                        }
                         break;
                     case "Volver":
                         action = false;
@@ -139,6 +150,22 @@ public class Main {
         return Option;
     }
 
+
+    public static String MenuShow() {
+        String[] Options = {"Consola",
+                "Panel",
+                "Web"
+        };
+        String Option = (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione una Opcion: ",
+                "Mostrar",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                Options,
+                Options[0]);
+        return Option;
+    }
     public static int GetNum(){
         while (true){
             try {
@@ -148,6 +175,22 @@ public class Main {
                 System.out.println("No ha ingresado un numero");
             }
         }
+    }
+
+    public static String MenuShow(String List) {
+        String[] Options = {"Consola",
+                "Panel",
+                "Web"
+        };
+        String Option = (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione una Opcion: ",
+                "Mostrar "+List,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                Options,
+                Options[0]);
+        return Option;
     }
 
     public static void Export(Lista[] Elems) {
