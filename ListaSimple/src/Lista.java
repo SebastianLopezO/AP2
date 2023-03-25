@@ -24,7 +24,7 @@ public class Lista {
         Nodo P, X = new Nodo(Dato);
         if (this.Punta == null) {
             this.Punta = X;
-        }else{
+        } else {
             X.setLiga(this.Punta);
             this.Punta = X;
         }
@@ -35,7 +35,7 @@ public class Lista {
 
         if (this.Punta == null) {
             this.Punta = X;
-        }else{
+        } else {
             P = this.Punta;
             while (P.getLiga() != null) {
                 P = P.getLiga(); //Avance de Liga
@@ -45,70 +45,76 @@ public class Lista {
 
     }
 
-    public void InsertOrder(int Dato){
+    public void InsertOrder(int Dato) {
         Orderby();
-        if(this.Punta==null){
+        if (this.Punta == null) {
             InsertEnd(Dato);
-        } else if (this.Punta.getDato()>Dato) {
+        } else if (this.Punta.getDato() > Dato) {
             InsertStart(Dato);
-        }else{
-            Nodo P=this.Punta;
-            Boolean Find=true;
-            while (P!=null && Find){
-                if (P.getDato()<=Dato && P.getLiga()==null ) {
+        } else {
+            Nodo P = this.Punta;
+            Boolean Find = true;
+            while (P != null && Find) {
+                if (P.getDato() <= Dato && P.getLiga() == null) {
                     InsertEnd(Dato);
-                    Find=false;
-                } else if (P.getDato()<=Dato && (P.getLiga()).getDato()>=Dato) {
-                    Nodo X=new Nodo(Dato);
+                    Find = false;
+                } else if (P.getDato() <= Dato && (P.getLiga()).getDato() >= Dato) {
+                    Nodo X = new Nodo(Dato);
                     X.setLiga(P.getLiga());
                     P.setLiga(X);
-                    Find=false;
+                    Find = false;
                 }
-                P=P.getLiga();
+                P = P.getLiga();
             }
         }
     }
 
     //Utilidades
 
-    public int Max(){
+    public int Max() {
         int Dato;
-        if(this.Punta!=null){
-            Dato= Punta.getDato();
+        if (this.Punta != null) {
+            Dato = Punta.getDato();
             for (Nodo P = this.Punta; P != null; P = P.getLiga()) {
-                if(P.getDato()>Dato){
-                    Dato=P.getDato();
+                if (P.getDato() > Dato) {
+                    Dato = P.getDato();
                 }
             }
-        }else{
-            Dato= 0;
+        } else {
+            Dato = 0;
         }
         return Dato;
     }
-    public int Min(){
+
+    public int Min() {
         int Dato;
-        if(this.Punta!=null){
-            Dato= Punta.getDato();
+        if (this.Punta != null) {
+            Dato = Punta.getDato();
             for (Nodo P = this.Punta; P != null; P = P.getLiga()) {
-                if(P.getDato()<Dato){
-                    Dato=P.getDato();
+                if (P.getDato() < Dato) {
+                    Dato = P.getDato();
                 }
             }
-        }else{
-            Dato= 0;
+        } else {
+            Dato = 0;
         }
         return Dato;
     }
+
     public void Orderby(){
-        Nodo P,X;
-        if(this.Punta!=null){
-            P=this.Punta;
+
+    }
+
+    public void Sort() {
+        Nodo P, X;
+        if (this.Punta != null) {
+            P = this.Punta;
             //Metodo Burbuja {Por cada N numeros se hace N recorridos}
-            while (P.getLiga()!=null){
-                X=this.Punta;
-                while ((X.getLiga()).getLiga()!=null) {
-                    if (P.getDato()>(P.getLiga()).getDato()){
-                        Swap(P,(P.getLiga()).getLiga());
+            while (P.getLiga() != null) {
+                X = this.Punta;
+                while ((X.getLiga()).getLiga() != null) {
+                    if (P.getDato() > (P.getLiga()).getDato()) {
+                        Swap(P, (P.getLiga()).getLiga());
                     }
                     X = X.getLiga();
                 }
@@ -118,14 +124,14 @@ public class Lista {
     }
 
 
-    public void Swap(Nodo P, Nodo X){
-        int aux=P.getDato();
+    public void Swap(Nodo P, Nodo X) {
+        int aux = P.getDato();
         P.setDato(X.getDato());
         X.setDato(aux);
     }
 
-    public int Length(){
-        int cont=0;
+    public int Length() {
+        int cont = 0;
         Nodo P;
         for (P = this.Punta; P != null; P = P.getLiga()) {
             cont++;
@@ -133,8 +139,8 @@ public class Lista {
         return cont;
     }
 
-    public void Truncate(){
-        Punta=null;
+    public void Truncate() {
+        Punta = null;
         System.gc();
     }
 
@@ -146,55 +152,112 @@ public class Lista {
         }
         msj += " ]";
         JOptionPane.showMessageDialog(null, msj);
-
     }
 
     //Operaciones
 
-    public void OperList(Lista L, Lista S, String ope){
+    public void Sum(Lista L, Lista S) {
         Truncate();
-        Nodo PL=L.getPunta();
-        Nodo PS=S.getPunta();
-        int DL,DS;
-
-        while (PL!=null || PS!=null){
+        Nodo PL = L.getPunta();
+        Nodo PS = S.getPunta();
+        int DL, DS;
+        while (PL != null || PS != null) {
             //Obtener Digito de Lista L
-            if(PL!=null){
-                DL=PL.getDato();
-                PL=PL.getLiga();
-            }else{
-                DL=0;
+            if (PL != null) {
+                DL = PL.getDato();
+                PL = PL.getLiga();
+            } else {
+                DL = 0;
             }
 
             //Obtener Digito de Lista S
-            if(PL!=null){
-                DS=PS.getDato();
-                PS=PS.getLiga();
-            }else{
-                DS=0;
+            if (PL != null) {
+                DS = PS.getDato();
+                PS = PS.getLiga();
+            } else {
+                DS = 0;
+            }
+            InsertEnd(DL + DS);
+        }
+    }
+
+    public void Sub(Lista L, Lista S) {
+        Truncate();
+        Nodo PL = L.getPunta();
+        Nodo PS = S.getPunta();
+        int DL, DS;
+        while (PL != null || PS != null) {
+            //Obtener Digito de Lista L
+            if (PL != null) {
+                DL = PL.getDato();
+                PL = PL.getLiga();
+            } else {
+                DL = 0;
             }
 
-            switch (ope){
-                case "+":
-                    InsertEnd(DL+DS);
-                    break;
-                case "-":
-                    InsertEnd(DL-DS);
-                    break;
-                case "*":
-                    InsertEnd(DL*DS);
-                    break;
-                case "/":
-                    try{
-                        InsertEnd(DL/DS);
-                    }catch (ArithmeticException  ex){
-                        System.out.println("Division por cero");
-                        InsertEnd(1);
-                    }
-                    break;
+            //Obtener Digito de Lista S
+            if (PL != null) {
+                DS = PS.getDato();
+                PS = PS.getLiga();
+            } else {
+                DS = 0;
+            }
+            InsertEnd(DL - DS);
+        }
+    }
+
+    public void Mult(Lista L, Lista S) {
+        Truncate();
+        Nodo PL = L.getPunta();
+        Nodo PS = S.getPunta();
+        int DL, DS;
+        while (PL != null || PS != null) {
+            //Obtener Digito de Lista L
+            if (PL != null) {
+                DL = PL.getDato();
+                PL = PL.getLiga();
+            } else {
+                DL = 0;
             }
 
+            //Obtener Digito de Lista S
+            if (PL != null) {
+                DS = PS.getDato();
+                PS = PS.getLiga();
+            } else {
+                DS = 0;
+            }
+            InsertEnd(DL * DS);
+        }
+    }
 
+    public void Div(Lista L, Lista S) {
+        Truncate();
+        Nodo PL = L.getPunta();
+        Nodo PS = S.getPunta();
+        int DL, DS;
+        while (PL != null || PS != null) {
+            //Obtener Digito de Lista L
+            if (PL != null) {
+                DL = PL.getDato();
+                PL = PL.getLiga();
+            } else {
+                DL = 0;
+            }
+
+            //Obtener Digito de Lista S
+            if (PL != null) {
+                DS = PS.getDato();
+                PS = PS.getLiga();
+            } else {
+                DS = 0;
+            }
+            try {
+                InsertEnd(DL / DS);
+            } catch (ArithmeticException ex) {
+                System.out.println("Division por cero");
+            }
         }
     }
 }
+

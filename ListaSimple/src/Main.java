@@ -1,112 +1,106 @@
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        Lista L1 = new Lista();
-        Lista L2 = new Lista();
-        Lista L3 = new Lista();
-        Lista L4 = new Lista();
-        Lista LAns = new Lista();
-        Lista L=new Lista();
+        Lista ListA = new Lista();
+        Lista ListB = new Lista();
+        Lista ListC = new Lista();
+        Lista ListD = new Lista();
+        Lista ListAns = new Lista();
 
-        boolean app = true;
-        String Option,SubOption,OptionList;
+        //Puntero
+        Lista L = null;
+        Lista S = null;
+
+        //Mapa de Variables
+        Map<String, Lista> Variables = new HashMap<>();
+        Variables.put("ListA", ListA);
+        Variables.put("ListB", ListB);
+        Variables.put("ListC", ListC);
+        Variables.put("ListD", ListD);
+
+        boolean app = true, action=true;
+        String Option, OptionOpe[], OptionList;
+
         int num;
 
         do {
             Option = Menu();
             OptionList = MenuList();
 
-            switch (OptionList){
+            switch (OptionList) {
                 case "ListA":
-                    L = L1;
+                    L = ListA;
                     break;
                 case "ListB":
-                    L = L2;
+                    L = ListB;
                     break;
                 case "ListC":
-                    L = L3;
+                    L = ListC;
                     break;
                 case "ListD":
-                    L = L4;
-                    break;
-            }
-
-            switch (Option) {
-                case "Ingresar Ordenado":
-                    try {
-                        num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
-                    } catch (NumberFormatException ex) {
-                        break;
-                    }
-                    L.InsertOrder(num);
-                    break;
-                case "Ingresar al Final":
-                    try {
-                        num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
-                    } catch (NumberFormatException ex) {
-                        break;
-                    }
-                    L.InsertEnd(num);
-                    break;
-                case "Ingresar al Inicio":
-                    try {
-                        num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
-                    } catch (NumberFormatException ex) {
-                        break;
-                    }
-                    L.InsertStart(num);
-                    break;
-                case "Ordenar Lista":
-                    L.Orderby();
-                    break;
-                case "Mostrar Lista":
-                    L.Show();
+                    L = ListD;
                     break;
                 case "Operacion Con Listas":
-                    SubOption =MenuOpe();
-                    switch (SubOption){
-                        case "Suma de Listas":
-                            LAns.OperList(L1,L2, "+");
+                    OptionOpe = MenuOpe();
+                    L=Variables.get(OptionOpe[0]);
+                    S=Variables.get(OptionOpe[2]);
+
+                    switch (OptionOpe[1]) {
+                        case "+":
+                            ListAns.Sum(L, S);
                             break;
-                        case "Resta de Listas":
-                            LAns.OperList(L1,L2, "-");
+                        case "-":
+                            ListAns.Sub(L, S);
                             break;
-                        case "Multiplicacion de Listas":
-                            LAns.OperList(L1,L2, "*");
+                        case "*":
+                            ListAns.Mult(L, S);
                             break;
-                        case "Division de Listas":
-                            LAns.OperList(L1,L2, "/");
+                        case "/":
+                            ListAns.Div(L, S);
                             break;
                     }
                     break;
                 case "Salir":
+                    System.out.println("Hasta Luego, Vuelve pronto");
+                    action = false;
                     app = false;
-                    break;
             }
-
-            switch (OptionList){
-                case "ListA":
-                    L1= L;
-                    break;
-                case "ListB":
-                    L2 = L;
-                    break;
-                case "ListC":
-                    L3 = L;
-                    break;
-                case "ListD":
-                    L4 = L;
-                    break;
+            while (action) {
+                switch (Option) {
+                    case "Ingresar Ordenado":
+                        L.InsertOrder(GetNum());
+                        break;
+                    case "Ingresar al Final":
+                        L.InsertEnd(GetNum());
+                        break;
+                    case "Ingresar al Inicio":
+                        L.InsertStart(GetNum());
+                        break;
+                    case "Ordenar Lista":
+                        L.Sort();
+                        break;
+                    case "Ordenar Nodo":
+                        L.Orderby();
+                        break;
+                    case "Mostrar Lista":
+                        L.Show();
+                        break;
+                    case "volver":
+                        action = false;
+                        break;
+                }
             }
 
         } while (app);
 
     }
 
-    public static String Menu(){
-        String[] Options = {"Ingresar Ordenado","Ingresar al Final", "Ingresar al Inicio","Ordenar Lista","Mostrar Lista","Operacion Con Listas", "Salir"};
-        String Option =  (String) JOptionPane.showInputDialog(
+    public static String Menu() {
+        String[] Options = {"Ingresar Ordenado", "Ingresar al Final", "Ingresar al Inicio", "Ordenar Lista", "Mostrar Lista", "Volver"};
+        String Option = (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione la Opcion: ",
                 "Menu",
@@ -118,9 +112,9 @@ public class Main {
         return Option;
     }
 
-    public static String MenuList(){
-        String[] Options = {"ListA","ListB", "ListC","ListD","ListaAns"};
-        String Option =  (String) JOptionPane.showInputDialog(
+    public static String MenuList() {
+        String[] Options = {"ListA", "ListB", "ListC", "ListD", "ListaAns", "Operacion Con Listas", "Salir"};
+        String Option = (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione la Opcion: ",
                 "Variables",
@@ -132,17 +126,25 @@ public class Main {
         return Option;
     }
 
-    public static String MenuOpe(){
-        String[] Options = {"Suma de Listas","Resta de Listas","Multiplicacion de Listas","Division de Listas"};
-        String Option =  (String) JOptionPane.showInputDialog(
-                null,
-                "Seleccione la Opcion: ",
-                "Operaciones",
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                Options,
-                Options[0]);
+    public static String[] MenuOpe() {
+        JComboBox<String> Var1 = new JComboBox<>(new String[]{"ListA", "ListB", "ListC", "ListD"});
+        JComboBox<String> Var2 = new JComboBox<>(new String[]{"ListA", "ListB", "ListC", "ListD"});
+        JComboBox<String> Ope = new JComboBox<>(new String[]{"+", "-", "*", "/"});
 
+        Object[] msj = {Var1, Ope, Var2};
+        JOptionPane.showConfirmDialog(null, msj, "Operacion a realizar:", JOptionPane.DEFAULT_OPTION);
+        String[] Option = {(String) Var1.getSelectedItem(), (String) Ope.getSelectedItem(), (String) Var2.getSelectedItem()};
         return Option;
+    }
+
+    public static int GetNum(){
+        while (true){
+            try {
+               int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Numero a Insertar: "));
+               return num;
+            } catch (NumberFormatException ex) {
+                System.out.println("No ha ingresado un numero");
+            }
+        }
     }
 }
