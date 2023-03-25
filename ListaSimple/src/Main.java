@@ -113,7 +113,7 @@ public class Main {
     }
 
     public static String Menu() {
-        String[] Options = {"Ingresar Ordenado", "Ingresar al Final", "Ingresar al Inicio", "Ordenar Lista", "Mostrar Lista", "Volver"};
+        String[] Options = {"Ingresar Ordenado", "Ingresar al Final", "Ingresar al Inicio", "Ordenar Lista","Ordenar Nodo","Mostrar Lista", "Volver"};
         String Option = (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione la Opcion: ",
