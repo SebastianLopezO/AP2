@@ -104,7 +104,21 @@ public class Lista {
     }
 
     public void Orderby() {
-
+        Nodo P, X;
+        if (this.Punta != null) {
+            P = this.Punta;
+            //Metodo Burbuja {Por cada N numeros se hace N recorridos}
+            while (P.getLiga() != null) {
+                X = this.Punta;
+                while ((X.getLiga()).getLiga() != null) {
+                    if (P.getDato() > (P.getLiga()).getDato()) {
+                        Swap(P, (P.getLiga()).getLiga());
+                    }
+                    X = X.getLiga();
+                }
+                P = P.getLiga();
+            }
+        }
     }
 
     public void Sort() {
@@ -147,7 +161,7 @@ public class Lista {
     }
 
     public void Show() {
-        String msj = "[ ";
+        String msj = Name+": [ ";
         Nodo P;
         for (P = this.Punta; P != null; P = P.getLiga()) {
             msj += "| " + P.getDato() + " | " + P.getLiga() + " |  => ";
@@ -157,7 +171,7 @@ public class Lista {
     }
 
     public void ShowDetails() {
-        String msj = "[ ";
+        String msj = Name+": [ ";
         Nodo P;
         for (P = this.Punta; P != null; P = P.getLiga()) {
             msj += "| " + P.getDato() + " | " + P.getLiga() + " |  => ";
