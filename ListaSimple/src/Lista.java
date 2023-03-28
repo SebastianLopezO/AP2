@@ -104,19 +104,30 @@ public class Lista {
     }
 
     public void Orderby() {
-        Nodo P, X;
-        if (this.Punta != null) {
-            P = this.Punta;
-            //Metodo Burbuja {Por cada N numeros se hace N recorridos}
-            while (P.getLiga() != null) {
-                X = this.Punta;
-                while ((X.getLiga()).getLiga() != null) {
-                    if (P.getDato() > (P.getLiga()).getDato()) {
-                        Swap(P, (P.getLiga()).getLiga());
+        if (this.Punta != null) { //Si esta vacia
+            if (this.Punta.getLiga() != null) {//Si solo tiene un Elemento
+                for (int K = 0; K < Length(); K++) {
+                    Nodo A = null, P = this.Punta, S = P.getLiga();
+                    while (S != null) {
+                        if (P.getDato() > S.getDato()) {
+                            if (P==Punta){
+                                Punta=S;
+                                P.setLiga(S.getLiga());
+                                S.setLiga(P);
+                            }else{
+                                A.setLiga(S);
+                                P.setLiga(S.getLiga());
+                                S.setLiga(P);
+                            }
+                            A=S;
+                            S=P.getLiga();
+                        } else {
+                            A = P;
+                            P = S;
+                            S = S.getLiga();
+                        }
                     }
-                    X = X.getLiga();
                 }
-                P = P.getLiga();
             }
         }
     }
@@ -140,10 +151,10 @@ public class Lista {
     }
 
 
-    public void Swap(Nodo P, Nodo X) {
-        int aux = P.getDato();
-        P.setDato(X.getDato());
-        X.setDato(aux);
+    public void Swap(Nodo L, Nodo S) {
+        int aux = L.getDato();
+        L.setDato(S.getDato());
+        S.setDato(aux);
     }
 
     public int Length() {
@@ -161,7 +172,7 @@ public class Lista {
     }
 
     public void Show() {
-        String msj = Name+": [ ";
+        String msj = Name + ": [ ";
         Nodo P;
         for (P = this.Punta; P != null; P = P.getLiga()) {
             msj += "| " + P.getDato() + " | " + P.getLiga() + " |  => ";
@@ -171,7 +182,7 @@ public class Lista {
     }
 
     public void ShowDetails() {
-        String msj = Name+": [ ";
+        String msj = Name + ": [ ";
         Nodo P;
         for (P = this.Punta; P != null; P = P.getLiga()) {
             msj += "| " + P.getDato() + " | " + P.getLiga() + " |  => ";
