@@ -43,6 +43,9 @@ public class Main {
                 case "ListD":
                     L = ListD;
                     break;
+                case "ListAns":
+                    L = ListAns;
+                    break;
                 case "Operacion Con Listas":
                     OptionOpe = MenuOpe();
                     L = Variables.get(OptionOpe[0]);
@@ -60,6 +63,9 @@ public class Main {
                             break;
                         case "/":
                             ListAns.Div(L, S);
+                            break;
+                        case "∪":
+                            ListAns.JoinBraid(L, S);
                             break;
                     }
                     action = false;
@@ -148,7 +154,7 @@ public class Main {
     public static String[] MenuOpe() {
         JComboBox<String> Var1 = new JComboBox<>(new String[]{"ListA", "ListB", "ListC", "ListD"});
         JComboBox<String> Var2 = new JComboBox<>(new String[]{"ListA", "ListB", "ListC", "ListD"});
-        JComboBox<String> Ope = new JComboBox<>(new String[]{"+", "-", "*", "/"});
+        JComboBox<String> Ope = new JComboBox<>(new String[]{"+", "-", "*", "/","∪"});
 
         Object[] msj = {Var1, Ope, Var2};
         JOptionPane.showConfirmDialog(null, msj, "Operacion a realizar:", JOptionPane.DEFAULT_OPTION);

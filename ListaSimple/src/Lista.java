@@ -146,6 +146,36 @@ public class Lista {
         return Match;
     }
 
+    public void JoinBraid(Lista L,Lista S){
+        Nodo PL=L.Punta; Nodo PS=S.Punta;
+        boolean Flag=true;
+        do{
+            if(PL!=null){
+                if(Flag){
+                    int DL=PL.getDato();
+                    InsertEnd(DL);
+                    PL=PL.getLiga();
+                    Flag=false;
+                }
+            }else{
+                Flag=false;
+            }
+
+            if(PS!=null){
+                if(!Flag){
+                    int DS=PS.getDato();
+                    InsertEnd(DS);
+                    PS=PS.getLiga();
+                    Flag=true;
+                }
+            }else{
+                Flag=true;
+            }
+
+
+        }while (PL!=null || PS!=null);
+    }
+
     public void Sort() {
         Nodo P, X;
         if (this.Punta != null) {
