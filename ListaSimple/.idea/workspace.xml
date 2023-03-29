@@ -4,9 +4,9 @@
     <list default="true" id="36a983a2-9d66-4328-a4f3-d95bbce4b58b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ListaSimple/Lista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ListaSimple/Lista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ListaSimple/frame/Memory.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ListaSimple/frame/Memory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frame/ListA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frame/ListA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frame/Memory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frame/Memory.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +59,7 @@
       <workItem from="1679767368599" duration="826000" />
       <workItem from="1679777352191" duration="629000" />
       <workItem from="1679970944085" duration="5046000" />
+      <workItem from="1680050073572" duration="1488000" />
     </task>
     <servers />
   </component>

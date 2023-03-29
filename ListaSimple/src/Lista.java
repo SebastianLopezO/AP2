@@ -112,13 +112,11 @@ public class Lista {
                         if (P.getDato() > S.getDato()) {
                             if (P==Punta){
                                 Punta=S;
-                                P.setLiga(S.getLiga());
-                                S.setLiga(P);
                             }else{
                                 A.setLiga(S);
-                                P.setLiga(S.getLiga());
-                                S.setLiga(P);
                             }
+                            P.setLiga(S.getLiga());
+                            S.setLiga(P);
                             A=S;
                             S=P.getLiga();
                         } else {
@@ -130,6 +128,22 @@ public class Lista {
                 }
             }
         }
+    }
+
+    public boolean Compare(Lista S){
+        boolean Match=false;
+        if (Length()==S.Length()){
+            Match=true;
+            Nodo PL=this.Punta; Nodo PS=S.Punta;
+            while (PL!=null){
+                if(PL.getDato()!=PS.getDato()){
+                    Match=false;
+                }
+                PL=PL.getLiga();
+                PS=PS.getLiga();
+            }
+        }
+        return Match;
     }
 
     public void Sort() {

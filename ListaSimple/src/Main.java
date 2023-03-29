@@ -89,6 +89,11 @@ public class Main {
                     case "Ordenar Nodo":
                         L.Orderby();
                         break;
+                    case "Comparar Lista":
+                        OptionList = MenuList();
+                        S=Variables.get(OptionList);
+                        System.out.println("¿La lista "+L.Name+" es igual a la lista "+S.Name+"?:"+L.Compare(S));
+                        break;
                     case "Mostrar Lista":
                         OptionShow = MenuShow();
                         switch (OptionShow) {
@@ -113,7 +118,7 @@ public class Main {
     }
 
     public static String Menu() {
-        String[] Options = {"Ingresar Ordenado", "Ingresar al Final", "Ingresar al Inicio", "Ordenar Lista","Ordenar Nodo","Mostrar Lista", "Volver"};
+        String[] Options = {"Ingresar Ordenado", "Ingresar al Final", "Ingresar al Inicio", "Ordenar Lista","Ordenar Nodo","Comparar Lista","Mostrar Lista", "Volver"};
         String Option = (String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione la Opcion: ",
