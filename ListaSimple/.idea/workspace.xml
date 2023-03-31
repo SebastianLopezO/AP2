@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36a983a2-9d66-4328-a4f3-d95bbce4b58b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/ListaSimple/frame/Memory.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ListaSimple/frame/Memory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frame/Memory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/frame/Memory.html" afterDir="false" />
-    </list>
+    <list default="true" id="36a983a2-9d66-4328-a4f3-d95bbce4b58b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +55,7 @@
       <workItem from="1679970944085" duration="5046000" />
       <workItem from="1680050073572" duration="2747000" />
       <workItem from="1680053447071" duration="103000" />
+      <workItem from="1680231924425" duration="40000" />
     </task>
     <servers />
   </component>
