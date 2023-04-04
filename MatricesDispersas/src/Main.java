@@ -7,7 +7,10 @@ public class Main {
                 {0,24,30},
                 {0,0,0}
         };
+        System.out.println("Matriz");
         PrintArray(Matriz);
+        System.out.println("Tripleta");
+        PrintArray(Tripleta(Matriz,DistinctZero(Matriz)));
     }
 
     public static void PrintArray(int[][] Matriz){
@@ -43,8 +46,33 @@ public class Main {
         return max;
     }
 
-    public static int[][] Tripleta(int[][] Matriz){
-        int[][] tripleta=new int[4][3];
+    public static int DistinctZero(int [][] Matriz){
+        int cont=0;
+        for(int i=0;i<Matriz.length;i++){
+            for(int j=0;j<Matriz[i].length;j++){
+                if(Matriz[i][j]!=0){
+                   cont++;
+                }
+            }
+        }
+        return cont;
+    }
+
+    public static int[][] Tripleta(int[][] Matriz, int diffzero){
+        int[][] tripleta=new int[diffzero+2][3];
+        tripleta[0][0]=Matriz.length; tripleta[0][1]=Matriz[0].length; tripleta[0][2]=diffzero;
+        int cont=0;
+        for(int i=0;i<Matriz.length;i++){
+            for(int j=0;j<Matriz[i].length;j++){
+                if(Matriz[i][j]!=0){
+                    cont++;
+                    tripleta[cont][0]=i;
+                    tripleta[cont][1]=j;
+                    tripleta[cont][2]=Matriz[i][j];
+                }
+            }
+        }
+        tripleta[diffzero+1][0]=Matriz.length+1; tripleta[diffzero+1][1]=Matriz[0].length+1;
         return tripleta;
     }
 }
