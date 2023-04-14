@@ -49,6 +49,75 @@ public class Lista {
 
     }
 
+    public void Symmetric(){
+        int match=0;
+        if(Length()%2==0){
+            match=SymPair();
+            System.out.print("En la lista par ");
+        }else{
+            match=SymOdd();
+            System.out.print("En la lista impar ");
+        }
+        System.out.print("hay "+match+" elementos iguales\n");
+    }
+
+    public int SymOdd(){
+        int cont=0; Nodo P=Punta, A=Cola;
+        while (P!=A){
+            if(P.getDato()==A.getDato()){
+                cont++;
+            }
+            P=P.getLigaD(); A=A.getLigaI();
+        }
+        return cont;
+    }
+
+    public int SymPair(){
+        int cont=0; Nodo P=Punta, A=Cola; boolean match=true;
+        if(P!=null && A!=null){
+            do{
+                if(P.getDato()==A.getDato()){
+                    cont++;
+                }
+                if(P.getLigaD()==A && A.getLigaI()==P){
+                    match=false;
+                }else{
+                    P=P.getLigaD();
+                    A=A.getLigaI();
+                }
+            }while (match);
+        }
+        return cont;
+    }
+
+    public void DelSerial(){
+        Nodo P=Punta;
+        while (P!=null){
+            if(P.getLigaD()!=null){
+                if(P.getDato()==(P.getLigaD()).getDato()){
+                    DelNodo(P.getLigaD());
+                }
+            }
+            P=P.getLigaD();
+        }
+    }
+
+    public void DelNodo(Nodo A){
+        (A.getLigaI()).setLigaD(A.getLigaD());
+        if(A.getLigaD()!=null){
+            (A.getLigaD()).setLigaI(A.getLigaI());
+        }
+    }
+
+    public int Length(){
+        int cont=0; Nodo P=Punta;
+        while (P!=null){
+            cont++;
+            P=P.getLigaD();
+        }
+        return cont;
+    }
+
     public void Show() {
         String msj = "[ ";
         Nodo P;
