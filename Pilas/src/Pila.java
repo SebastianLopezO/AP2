@@ -1,32 +1,59 @@
 public class Pila {
-    final int lim=6;
-    int[] V = new int[lim];
-    int Tope=-1;
+    //Atributos
+    private int Lim;
+    private int[] Vec;
+    private int Tope;
 
-
-    public boolean PilaEmpty(){
-        if(Tope==-1){
-            return true;
-        }
-        return false;
+    //Constructor
+    public Pila(int n){
+        this.Lim=n-1;
+        this.Tope=-1;
+        this.Vec = new int[n];
     }
 
-    public boolean PilaFull(){
-        if(Tope==lim){
-            return true;
-        }
-        return false;
+    //Getter's and Setter's
+    public int getLim() {
+        return Lim;
+    }
+
+    public void setLim(int lim) {
+        Lim = lim;
+    }
+
+    public int[] getVec() {
+        return Vec;
+    }
+
+    public void setVec(int[] vec) {
+        Vec = vec;
+    }
+
+    public int getTope() {
+        return Tope;
+    }
+
+    public void setTope(int tope) {
+        Tope = tope;
+    }
+
+
+    public boolean Empty(){
+        return Tope==-1;
+    }
+
+    public boolean Full(){
+        return Tope==Lim;
     }
 
     public void Stack(int num){
         Tope++;
-        V[Tope]=num;
+        Vec[Tope]=num;
     }
 
-    public int UnStack(int num){
-        int aux=V[Tope];
+    public int Unstack(int num){
+        int aux=Vec[Tope];
         Tope--;
-        V[Tope]=num;
+        Vec[Tope]=num;
         return aux;
     }
 }
